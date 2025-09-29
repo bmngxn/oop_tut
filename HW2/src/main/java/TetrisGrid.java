@@ -3,6 +3,9 @@
 // a clearRows() capability.
 
 public class TetrisGrid {
+	private boolean[][] grid; 
+    private int width;    
+    private int height;
 	
 	/**
 	 * Constructs a new instance with the given grid.
@@ -10,6 +13,9 @@ public class TetrisGrid {
 	 * @param grid
 	 */
 	public TetrisGrid(boolean[][] grid) {
+		this.grid = grid;
+        this.width = grid.length;
+        this.height = grid[0].length;
 	}
 	
 	
@@ -17,6 +23,8 @@ public class TetrisGrid {
 	 * Does row-clearing on the grid (see handout).
 	 */
 	public void clearRows() {
+
+	
 	}
 	
 	/**
