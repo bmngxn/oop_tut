@@ -1,6 +1,9 @@
-//
-// TetrisGrid encapsulates a tetris board and has
-// a clearRows() capability.
+/**
+ * TetrisGrid encapsulates a tetris board and has
+ * a clearRows() capability.
+ * 
+ * @author bmngxn
+ */
 
 public class TetrisGrid {
 	private boolean[][] grid; 
@@ -13,9 +16,9 @@ public class TetrisGrid {
 	 * @param grid
 	 */
 	public TetrisGrid(boolean[][] grid) {
-		this.grid = grid;
-        this.width = grid.length;
-        this.height = grid[0].length;
+		this.grid = grid; 			  // all false by default
+        this.width = grid.length;     // Cartesian x
+        this.height = grid[0].length; // Cartesian y
 	}
 	
 	
@@ -23,8 +26,28 @@ public class TetrisGrid {
 	 * Does row-clearing on the grid (see handout).
 	 */
 	public void clearRows() {
+		boolean[][] newGrid = new boolean[width][height];
 
-	
+        int ny = 0;
+
+        for (int y = 0; y < height; y++) {
+
+            boolean isAllTrueRow = true;
+            for (int x = 0; x < width; x++) {
+                if (grid[x][y] == false) {
+                    isAllTrueRow = false;
+                    break;
+                }
+            }
+
+            if (!isAllTrueRow) {
+                for (int x = 0; x < width; x++) {
+                    newGrid[x][ny] = grid[x][y];
+                }
+                ny++;
+            }
+        }
+        this.grid = newGrid;
 	}
 	
 	/**
@@ -32,6 +55,6 @@ public class TetrisGrid {
 	 * @return 2d grid array
 	 */
 	boolean[][] getGrid() {
-		return null; // YOUR CODE HERE
+		return grid;
 	}
 }
